@@ -8,6 +8,7 @@ import java.sql.SQLException;
 public class JdbcConnection {
 	
 	public static Connection getJdbcConnection() {
+		//test
 //		final String url = "jdbc:mysql://localhost:3306/webshop";
 		final String url = "jdbc:mysql://45.61.159.32/NLbWWQGOLS";
 		final String user = "NLbWWQGOLS";
