@@ -119,6 +119,10 @@ public class ProductsD {
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, idP);
 			ResultSet rs = ps.executeQuery();
+			if(rs.isBeforeFirst() == false)
+			{
+				return null;
+			}
 			while(rs.next())
 			{
 				int id = rs.getInt("id");

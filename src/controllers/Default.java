@@ -11,22 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.BrandsD;
 import dao.CategoriesD;
-import dao.ProductsD;
 import tables.Brands;
 import tables.Categories;
-import tables.Products;
 
 /**
- * Servlet implementation class Product
+ * Servlet implementation class Default
  */
-@WebServlet("/product/*")
-public class Product extends HttpServlet {
+@WebServlet("/")
+public class Default extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Product() {
+    public Default() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,23 +33,8 @@ public class Product extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LoadBanner(request, response);//load banner
-		if(request.getPathInfo() != null)
-		{
-			String id = request.getPathInfo().substring(1); // get id product
-			Products product = LoadProduct(request, response, id);// pass id and get product
-			if(product != null)
-			{
-				request.setAttribute("product", product);
-				request.getRequestDispatcher("/WEB-INF/product.jsp").forward(request, response);
-			}
-			else {
-				request.getRequestDispatcher("/WEB-INF/default.jsp").forward(request, response);
-			}
-		}
-		else {
-			request.getRequestDispatcher("/WEB-INF/default.jsp").forward(request, response);
-		}
+		LoadBanner(request, response);
+		request.getRequestDispatcher("/WEB-INF/default.jsp").forward(request, response);
 	}
 
 	/**
@@ -60,11 +43,6 @@ public class Product extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-	}
-	protected Products LoadProduct(HttpServletRequest request, HttpServletResponse response,String id) throws ServletException, IOException {
-		ProductsD productsdao = new ProductsD();
-		Products product = productsdao.getProductById(id);
-		return product;
 	}
 	protected void LoadBanner(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategoriesD categoriesdao = new CategoriesD();

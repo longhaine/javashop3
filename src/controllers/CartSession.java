@@ -59,7 +59,6 @@ public class CartSession extends HttpServlet {
 			if(action.equals("removecart")) { // remove cart
 				if(cartList != null)
 				{
-					System.out.println("cartList != null");
 					int index = -1;
 					for(Products productIndex : cartList)
 					{
@@ -69,7 +68,6 @@ public class CartSession extends HttpServlet {
 							break;
 						}
 					}
-					System.out.println(index);
 					if(index >=0)
 					{
 						System.out.println("index >=0");
